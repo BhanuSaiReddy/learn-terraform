@@ -1,14 +1,30 @@
+variable "ami" {
+  defualt = "ami-03265a0778a880afb"
+}
+
+variable "security_group" {
+  default = ["sg-00f89e3d7e55eac8b" ]
+}
+variable "instance_type" {
+  default = "t3.small"
+}
+
+variable "zone_id" {
+  default = "Z05703682PRJCSXIZAED6"
+}
+
+
 resource "aws_instance" "frontend" {
-  ami           = "ami-03265a0778a880afb"
-  instance_type = "t3.small"
-  vpc_security_group_ids = [ "sg-00f89e3d7e55eac8b" ]
+  ami           = var.ami
+  instance_type = var.instance_type
+  vpc_security_group_ids = var.security_group
   tags = {
     Name = "frontend"
   }
 }
 
 resource "aws_route53_record" "frontend" {
-  zone_id = "Z05703682PRJCSXIZAED6"
+  zone_id = var.zone_id
   name    = "frontend-dev.devopsbs344.online"
   type    = "A"
   ttl     = 30
@@ -16,8 +32,8 @@ resource "aws_route53_record" "frontend" {
 }
 
 resource "aws_instance" "mongodb" {
-  ami           = "ami-03265a0778a880afb"
-  instance_type = "t3.small"
+  ami           = "var.ami"
+  instance_type = "var.instance_type"
   vpc_security_group_ids = [ "sg-00f89e3d7e55eac8b" ]
   tags = {
     Name = "mongodb"
