@@ -38,9 +38,8 @@ resource "aws_instance" "instance" {
     Name = lookup(var.components,lookup(each.valve,"name",null),null)
   }
 }
-output "test" {
-  valve = lookup(var.components, "frontend", "null")
-
+output"test" {
+  value = lookup(var.components, "frontend", "null")
 }
 #resource "aws_route53_record" "record" {
   #for_each = var.components
