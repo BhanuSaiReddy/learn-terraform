@@ -34,10 +34,10 @@ resource "aws_instance" "instance" {
   instance_type = var.instance_type
   vpc_security_group_ids = var.security_group
 
-  tags = {
-    Name = lookup(var.components, lookup(each.valve, "name", null), null)
-  }
-}
+  #tags = {
+   # Name = lookup(var.components, lookup(each.valve, "name", null), null)
+  #}
+#}
 output"test" {
   value = lookup(var.components, "frontend", "null")
 }
