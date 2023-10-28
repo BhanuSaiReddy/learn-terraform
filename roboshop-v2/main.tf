@@ -29,11 +29,11 @@ variable "components" {
   }
 }
 resource "aws_instance" "instance" {
-  for_each = var.components
-  ami           = var.ami
-  instance_type = var.instance_type
+  for_each               = var.components
+  ami                    = var.ami
+  instance_type          = var.instance_type
   vpc_security_group_ids = var.security_groups
-
+}
   #tags = {
    # Name = lookup(var.components, lookup(each.valve, "name", null), null)
   #}
