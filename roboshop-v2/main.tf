@@ -1,5 +1,5 @@
 variable "ami" {
-  defualt = "ami-03265a0778a880afb"
+  default = "ami-03265a0778a880afb"
 }
 
 variable "security_group" {
